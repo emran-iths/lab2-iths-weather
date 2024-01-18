@@ -1,15 +1,22 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 import { Temperature } from "./pages/Temperature";
 import { WindSpeed } from "./pages/WindSpeed";
 import { Humidity } from "./pages/Humidity";
 import { NotFound } from "./pages/NotFound";
+import LongLatContext from "./LongLatContext";
 import Navbar from "./Navbar";
+import Map from "./Map";
 
 function App() {
+  const longLatState = useState(null);
+  const [longLat, setLongLat] = longLatState;
+
   return (
-    <>
+    <LongLatContext.Provider value={longLatState}>
+      <Map />
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/temperature" />} />
@@ -18,7 +25,7 @@ function App() {
         <Route path="/humidity" element={<Humidity />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-    </>
+    </LongLatContext.Provider>
   );
 }
 
