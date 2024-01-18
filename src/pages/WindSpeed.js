@@ -1,3 +1,3 @@
 export function WindSpeed() {
-	return <h1>WindSpeedd</h1>
+  return <h1>WindSpeedd</h1>;
 }

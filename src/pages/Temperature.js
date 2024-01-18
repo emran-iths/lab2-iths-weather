@@ -1,3 +1,3 @@
 export function Temperature() {
-	return <h1>Temperature</h1>
+  return <h1>Temperature</h1>;
 }
