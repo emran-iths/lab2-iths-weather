@@ -24,6 +24,11 @@ function App() {
   return (
     <>
       <Title>Weather app</Title>
+      {longLat && (
+        <h4>
+          Long: {longLat[0]}, Lat:{longLat[1]}
+        </h4>
+      )}
       <LongLatContext.Provider value={longLatState}>
         <Map />
         <Navbar />
