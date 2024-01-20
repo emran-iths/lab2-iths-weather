@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext, useReducer, useMemo } from "react";
 import axios from "axios";
 import LongLatContext from "./LongLatContext";
+import styled from "styled-components";
 
 const pageSize = 10;
 
@@ -12,6 +13,15 @@ const filterData = (paginator, data) => {
     );
   });
 };
+
+const Button = styled.button`
+  border-radius: 4px;
+  background-image: linear-gradient(#ccddff, #9999dd);
+  border: 0;
+  margin: 8px;
+  padding: 6px;
+  font-weight: bold;
+`;
 
 export function DataTable(props) {
   let dataType = props.dataType;
@@ -65,20 +75,20 @@ export function DataTable(props) {
         </>
       )}
       {paginator["page"]}
-      <button
+      <Button
         onClick={(e) => {
           paginatorDispatcher("previous");
         }}
       >
         previous
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={(e) => {
           paginatorDispatcher("next");
         }}
       >
         next
-      </button>
+      </Button>
       <table border="1">
         {pageData.map((d) => (
           <tr>
